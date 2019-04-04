@@ -3,6 +3,8 @@ import TodoForm from "./components/TodoComponents/TodoForm";
 import Todo from "./components/TodoComponents/Todo";
 import TodoList from "./components/TodoComponents/TodoList";
 
+// THIS IS THE PARENT COMPONENT : It will store my states and the change handlers that work with the states!
+
 class App extends React.Component {
   // you will need a place to store your state in this component.
   // design `App` to be the parent component of your application.
@@ -15,6 +17,7 @@ class App extends React.Component {
     };
   }
 
+  //This handle is going to add my todo. Needs to be linked to the "Add Todo"  button on the Todo form!
   handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
