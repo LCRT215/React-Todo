@@ -7,7 +7,7 @@ const TodoForm = props => {
         type="text"
         value={props.value}
         name="todo"
-        onChange={props.handleChange}
+        onChange={props.handleClear}
         placeholder="..todo"
       />
       {/* <input
@@ -23,8 +23,12 @@ const TodoForm = props => {
         onChange={props.handleChange}
       /> */}
 
-      <button onClick={props.handleSubmit}>Add Todo</button>
-      <button onClick={props.handleClear}>Clear Completed</button>
+      <button className="btn" onClick={props.handleSubmit}>
+        Add Todo
+      </button>
+      <button className="btn" onClick={props.handleClear}>
+        Clear Completed
+      </button>
     </form>
   );
 };
