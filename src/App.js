@@ -46,6 +46,7 @@ class App extends React.Component {
           task={this.state.task}
           handleChange={this.handleChange}
           handleSubmit={this.handleSubmit}
+          I
         />
       </div>
     );
