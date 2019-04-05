@@ -1,27 +1,17 @@
 import React from "react";
 
+//All of the props here are methods that are defined on App.js
+//This file is everything on the form
 const TodoForm = props => {
   return (
-    <form onSubmit={props.handleSubmit}>
+    <form className="form" onSubmit={props.handleSubmit}>
       <input
         type="text"
-        value={props.value}
         name="todo"
-        onChange={props.handleClear}
+        value={props.value}
         placeholder="..todo"
+        onChange={props.handleTodoChange}
       />
-      {/* <input
-        type="date"
-        value={Date.now()}
-        name="date"
-        onChange={props.handleChange}
-      />
-      <input
-        type="text"
-        value={props.completed}
-        name="completed"
-        onChange={props.handleChange}
-      /> */}
 
       <button className="btn" onClick={props.handleSubmit}>
         Add Todo

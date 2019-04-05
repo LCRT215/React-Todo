@@ -1,9 +1,8 @@
 import React from "react";
 import TodoForm from "./components/TodoComponents/TodoForm";
-import Todo from "./components/TodoComponents/Todo";
 import TodoList from "./components/TodoComponents/TodoList";
 
-// THIS IS THE PARENT COMPONENT : It will store my states and the change handlers that work with the states!
+// THIS IS THE PARENT COMPONENT : It will store my states, methods and change handlers that work with the states!
 
 class App extends React.Component {
   // you will need a place to store your state in this component.
@@ -12,6 +11,7 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      //original state defined in class
       todos: [], //Empty array for to-dos
       todo: "" //Empty string for the inputted to-do
     };
@@ -20,11 +20,13 @@ class App extends React.Component {
   //METHODS
   //This handle is going to clear my selected todos. Needs to be linked to the buttons on the Todo form further down when we render! Prevent default so the page does not refresh (the page refreshing is a big no-no in React).
   handleClear = event => {
+    //this method
     event.preventDefault();
     const todos = this.state.todos.filter(todo => !todo.completed);
     this.setState({ todos });
   };
 
+  //This method adds todo to the todo array
   handleSubmit = event => {
     event.preventDefault();
     this.setState({
@@ -41,7 +43,8 @@ class App extends React.Component {
   };
 
   toggleTodo = event => {
-    const todos = this.state.todos.slice();
+    //Need you use let here not const. Not sure why...
+    let todos = this.state.todos.slice();
     todos = todos.map(todo => {
       if (todo.id === event) {
         todo.completed = !todo.completed;
@@ -53,11 +56,18 @@ class App extends React.Component {
     this.setState({ todos });
   };
 
-  clearCompletedTodos = event => {
-    event.preventDefault();
-    let todos = this.state.todos.filter(todo => !todo.completed);
-    this.setState({ todos });
+  handleTodoChange = event => {
+    console.log(event.target.value);
+    this.setState({
+      todo: event.target.value
+    });
   };
+  // clearCompletedTodos = event => {
+  //   event.preventDefault();
+  //   let todos = this.state.todos.filter(todo => !todo.completed);
+  //   //Making a todo variable and filtering through the
+  //   this.setState({ todos });
+  // };
 
   //This is where we call all of our methods so they can be active on the page
   render() {
@@ -73,7 +83,7 @@ class App extends React.Component {
           value={this.state.todo}
           handleClear={this.handleClear}
           handleSubmit={this.handleSubmit}
-          handleClearTodos={this.clearCompletedTodos}
+          handleTodoChange={this.handleTodoChange}
         />
       </div>
     );
